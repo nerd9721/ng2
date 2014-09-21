@@ -444,7 +444,9 @@
                                 
                                   <source ng-src="{{video_src}}"  type="video/mp4">
                                   <!--<track ng-src="{{video_subtitle_src}}" kind="subtitles" srclang="en" label="English" default>-->
+                                  <!--
                                   <track ng-src="{{video_subtitle_src}}" kind="subtitles" srclang="en" label="English">
+                                  -->
                                    
                                 </video>
                       
@@ -465,6 +467,7 @@
 
                                   <accordion close-others="oneAtATime">
                                   
+                                    <!-- 단어 -->
                                     <accordion-group heading="1. Words" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled" class="panel-success">
                                     
                                     
@@ -473,33 +476,27 @@
                                       
                                           <accordion-group heading="{{word.title}}" ng-repeat="word in words">
 
-                                              <!--
-                                              <ul class="list-group">
                                                 <li class="list-group-item"  ng-repeat="tmp in word.contents">
-                                                  <p> 품사:&nbsp {{tmp.type}}</p>
-                                                  <p> 뜻:&nbsp {{tmp.meaning}}</p>
+                                                  <p> 뜻:&nbsp {{tmp.meaning}} <img src="{{tmp.img_path}}" alt="Tomato" height="75" width="75" align="right"></p>
+                                                  <p> 복수:&nbsp {{tmp.plura}}</p>
                                                   <p> 예제:&nbsp{{tmp.example}}</p>
                                                   <p> 번역:&nbsp{{tmp.example_kor}}</p>
-                                                </li>
-                                              </ul>-->
-                                              
-                                                <li class="list-group-item"  ng-repeat="tmp in word.contents">
-                                                  <p> 품사:&nbsp {{tmp.type}}</p>
-                                                  <p> 뜻:&nbsp {{tmp.meaning}}</p>
-                                                  <p> 예제:&nbsp{{tmp.example}}</p>
-                                                  <p> 번역:&nbsp{{tmp.example_kor}}</p>
+                                                  <audio controls>
+                                                    <source src="{{tmp.audio_path}}" type="audio/mpeg">
+                                                  </audio>
+                                                  
                                                 </li>
                                               
                                             
                                           </accordion-group>
                                       
                                       
-                                      </accordion>                                                
+                                      </accordion>                                            
                           
                                       
                                     </accordion-group>
                                     
-                                   
+                                    <!-- 퀴즈 -->
                                     <accordion-group heading="2. Quiz" class="panel-success">
                                           
                                           <table style="width:100%">
@@ -515,7 +512,8 @@
                                     </accordion-group>
                                     
                                     
-                                    <accordion-group heading="3. Grammar" class="panel-success">
+                                    <!-- 문법 -->
+                                    <accordion-group heading="3. Grammar" class="panel-success" ng-show="false">
                                       <div dynamic="html"></div>
                                       
                                   

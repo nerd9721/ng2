@@ -9,6 +9,10 @@ todos.controller('todoCtrl', function ($scope, $http){
   // 비디오 관련 
   $scope.video_src = 'video/beginning/0_peppa_pig/peppa_pig.mp4';
   $scope.video_subtitle_src = 'video/beginning/0_peppa_pig/peppa_pig.vtt';
+  $scope.poster_src = 'video/beginning/0_peppa_pig/tomato.jpg';
+  
+  
+  
   
   // 단어
   $scope.oneAtATimeWord = true;
@@ -19,18 +23,20 @@ todos.controller('todoCtrl', function ($scope, $http){
     isFirstDisabled: false
   };
   
-  $scope.words = [ {title: 'Dinasour',  contents: [{ type:'noun(명사)', meaning: '공룡', example: 'A special exhibition called Discovering Dinosaur Expo is being held there.', example_kor:'찾아가는 공룡 엑스포 라고 불리는 매우 특별한 전시회 가 그 곳 에서 열리고 있습니다.'}] }, 
-                   {title: 'Dinasour2',  contents: [{ type:'noun(명사)', meaning: '공룡2', example: 'A special exhibition called Discovering Dinosaur Expo is being held there.', example_kor:'찾아가는 공룡 엑스포 라고 불리는 매우 특별한 전시회 가 그 곳 에서 열리고 있습니다.'}] }, 
-                   {title: 'Dinasour3',  contents: [{ type:'noun(명사)', meaning: '공룡3', example: 'A special exhibition called Discovering Dinosaur Expo is being held there.', example_kor:'찾아가는 공룡 엑스포 라고 불리는 매우 특별한 전시회 가 그 곳 에서 열리고 있습니다.'}] }]
+  $scope.words = [ {title: 'Dinosaur 명사(noun)',   contents: [{ audio_path: 'video/beginning/0_peppa_pig/tomato.mp3', img_path: 'video/beginning/0_peppa_pig/dinosaur.jpg', plura:'Dinosaurs', meaning: '공룡', example: 'A special exhibition called Discovering Dinosaur Expo is being held there.', example_kor:'찾아가는 공룡 엑스포 라고 불리는 매우 특별한 전시회 가 그 곳 에서 열리고 있습니다.'}] }, 
+                   {title: 'Tomato   명사(noun)',   contents: [{ audio_path: 'video/beginning/0_peppa_pig/tomato.mp3', img_path: 'video/beginning/0_peppa_pig/tomato.jpg', plura:'Tomatoes', meaning: '야채 토마토', example: 'A special exhibition called Discovering Dinosaur Expo is being held there.', example_kor:'찾아가는 공룡 엑스포 라고 불리는 매우 특별한 전시회 가 그 곳 에서 열리고 있습니다.'}] }, 
+                   {title: 'Dinosaur 명사(noun)',   contents: [{ audio_path: 'video/beginning/0_peppa_pig/tomato.mp3', img_path: 'video/beginning/0_peppa_pig/dinosaur.jpg', plura:'dinosaurs', meaning: '공룡', example: 'A special exhibition called Discovering Dinosaur Expo is being held there.', example_kor:'찾아가는 공룡 엑스포 라고 불리는 매우 특별한 전시회 가 그 곳 에서 열리고 있습니다.'}] }]
   
   // 퀴즈
   $scope.questions = ["In which year, did the first world war start?::1912;1913;__1914;1915", "In which year, did the second world war start?::1937;__1939;1941;1943"];
   
   
   // 문법
+  
   $scope.html = '<p> I went there last summar. </p>'
               + '<p> went는 go의 과거형</p>'
               + '<p> 나는 지난 여름에 거기에 다녀왔어.</p>';
+   
 });
 
 
