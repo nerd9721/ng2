@@ -2,8 +2,7 @@ var todos = angular.module('todos', ['ngSanitize', 'ui.bootstrap']);
 
 //todos.controller('todoCtrl', function ($scope, $http, $rootScope, $timeout, $dialogs){
 todos.controller('todoCtrl', function ($scope, $http){
-  
-  
+
   // 제목
   $scope.title = 'Peppa Pig Shopping'
     
@@ -20,11 +19,18 @@ todos.controller('todoCtrl', function ($scope, $http){
     isFirstDisabled: false
   };
   
-  $scope.words = [ {title: 'Dinasour',  contents: [{ type:'Noun(명사)', meaning: '공룡', example: 'A special exhibition called Discovering Dinosaur Expo is being held there.', example_kor:'찾아가는 공룡 엑스포 라고 불리는 매우 특별한 전시회 가 그 곳 에서 열리고 있습니다.'}] }, 
-                   {title: 'Dinasour2',  contents: [{ type:'Noun(명사)2', meaning: '공룡2', example: 'A special exhibition called Discovering Dinosaur Expo is being held there.', example_kor:'찾아가는 공룡 엑스포 라고 불리는 매우 특별한 전시회 가 그 곳 에서 열리고 있습니다.'}] }, 
-                   {title: 'Dinasour3',  contents: [{ type:'Noun(명사)3', meaning: '공룡3', example: 'A special exhibition called Discovering Dinosaur Expo is being held there.', example_kor:'찾아가는 공룡 엑스포 라고 불리는 매우 특별한 전시회 가 그 곳 에서 열리고 있습니다.'}] }]
+  $scope.words = [ {title: 'Dinasour',  contents: [{ type:'noun(명사)', meaning: '공룡', example: 'A special exhibition called Discovering Dinosaur Expo is being held there.', example_kor:'찾아가는 공룡 엑스포 라고 불리는 매우 특별한 전시회 가 그 곳 에서 열리고 있습니다.'}] }, 
+                   {title: 'Dinasour2',  contents: [{ type:'noun(명사)', meaning: '공룡2', example: 'A special exhibition called Discovering Dinosaur Expo is being held there.', example_kor:'찾아가는 공룡 엑스포 라고 불리는 매우 특별한 전시회 가 그 곳 에서 열리고 있습니다.'}] }, 
+                   {title: 'Dinasour3',  contents: [{ type:'noun(명사)', meaning: '공룡3', example: 'A special exhibition called Discovering Dinosaur Expo is being held there.', example_kor:'찾아가는 공룡 엑스포 라고 불리는 매우 특별한 전시회 가 그 곳 에서 열리고 있습니다.'}] }]
   
-  // 예제
+  // 퀴즈
+  $scope.questions = ["In which year, did the first world war start?::1912;1913;__1914;1915", "In which year, did the second world war start?::1937;__1939;1941;1943"];
+  
+  
+  // 문법
+  $scope.html = '<p> I went there last summar. </p>'
+              + '<p> went는 go의 과거형</p>'
+              + '<p> 나는 지난 여름에 거기에 다녀왔어.</p>';
 });
 
 
@@ -34,11 +40,18 @@ todos.controller('todoCtrl', function ($scope, $http){
 
 
 
-
-
-
-
-
+todos.directive('dynamic', function ($compile) {
+  return {
+    restrict: 'A',
+    replace: true,
+    link: function (scope, ele, attrs) {
+      scope.$watch(attrs.dynamic, function(html) {
+        ele.html(html);
+        $compile(ele.contents())(scope);
+      });
+    }
+  };
+});
 
 
 //퀴즈

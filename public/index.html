@@ -432,7 +432,7 @@
         
                 <div class="row">
                 <div class="col-lg-12">
-                    <div class="panel panel-default">
+                    <div class="panel panel-primary">
                         <div class="panel-heading">
                             {{title}}
                         </div>
@@ -465,15 +465,15 @@
 
                                   <accordion close-others="oneAtATime">
                                   
-                                    <accordion-group heading="1. Words" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+                                    <accordion-group heading="1. Words" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled" class="panel-success">
                                     
                                     
                                     
                                       <accordion close-others="oneAtATimeWord">
                                       
                                           <accordion-group heading="{{word.title}}" ng-repeat="word in words">
-                                          
-                                            
+
+                                              <!--
                                               <ul class="list-group">
                                                 <li class="list-group-item"  ng-repeat="tmp in word.contents">
                                                   <p> 품사:&nbsp {{tmp.type}}</p>
@@ -481,30 +481,43 @@
                                                   <p> 예제:&nbsp{{tmp.example}}</p>
                                                   <p> 번역:&nbsp{{tmp.example_kor}}</p>
                                                 </li>
-                                              </ul>
+                                              </ul>-->
+                                              
+                                                <li class="list-group-item"  ng-repeat="tmp in word.contents">
+                                                  <p> 품사:&nbsp {{tmp.type}}</p>
+                                                  <p> 뜻:&nbsp {{tmp.meaning}}</p>
+                                                  <p> 예제:&nbsp{{tmp.example}}</p>
+                                                  <p> 번역:&nbsp{{tmp.example_kor}}</p>
+                                                </li>
+                                              
                                             
                                           </accordion-group>
                                       
                                       
-                                      </accordion>
-                                      
-                                      
-                                      
-                                    
-                                    <!--
-                                        
-                                        -->
+                                      </accordion>                                                
+                          
                                       
                                     </accordion-group>
                                     
                                    
-                                    <accordion-group heading="2. Quiz">
-                                      <p>The body of the accordion group grows to fit the contents</p>
-                                  
+                                    <accordion-group heading="2. Quiz" class="panel-success">
+                                          
+                                          <table style="width:100%">
+                                            <tr ng-repeat="question in questions">
+                                              <td>
+                                              <iquestion text="{{question}}"></iquestion>
+                                              </td>
+                                            </tr>
+                                            
+                                          </table>
+                                          <iscorecard></iscorecard>
+     
                                     </accordion-group>
                                     
-                                    <accordion-group heading="3. Grammar">
-                                      <p>Be 동사가 사용되었습니다 verb </p>
+                                    
+                                    <accordion-group heading="3. Grammar" class="panel-success">
+                                      <div dynamic="html"></div>
+                                      
                                   
                                     </accordion-group>
                            
