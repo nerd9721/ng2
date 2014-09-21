@@ -1,0 +1,22 @@
+{
+  "name": "ng2",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "~4.0.0",
+    "morgan": "~1.0.0",
+    "body-parser": "~1.0.0",
+    "method-override": "~1.0.0",
+    "multer": "0.1.4",
+    "passport": "~0.1.17",
+    "passport-local": "~0.1.6",
+    "connect-flash" : "~0.1.1",   
+    "cookie-parser": "~1.0.0",
+    "express-session": "~1.0.0",
+    "connect-redis": "~2.0.0",
+    "colors": "0.6.2"
+  }
+}
