@@ -25,7 +25,7 @@ todos.controller('todoCtrl', function ($scope, $http){
   
   $scope.words = [ {title: 'Dinosaur 명사(noun)',   contents: [{ audio_path: 'video/beginning/0_peppa_pig/dinosaur.mp3', img_path: 'video/beginning/0_peppa_pig/dinosaur.jpg', plura:'Dinosaurs', meaning: '공룡', example: "A special exhibition called Discovering Dinosaur Expo is being held there.", example_kor:'찾아가는 공룡 엑스포 라고 불리는 매우 특별한 전시회 가 그 곳 에서 열리고 있습니다.'}] }, 
                    {title: 'Tomato   명사(noun)',   contents: [{ audio_path: 'video/beginning/0_peppa_pig/tomato.mp3', img_path: 'video/beginning/0_peppa_pig/tomato.jpg', plura:'Tomatoes', meaning: '토마토', example: "Today's tomato ketchup was devised by the American Henry J. Heinz in 1876.", example_kor:'오늘날의 토마토 케첩은 1876년에 헨리.J.하인즈이 고안했습니다.'}] }, 
-                   {title: 'trolley  명사(noun)',   contents: [{ audio_path: 'video/beginning/0_peppa_pig/trolley.mp3', img_path: 'video/beginning/0_peppa_pig/trolley.jpg', plura:'trolleys', meaning: '손수레(cart), 전차(trolley car)', example: 'The introduction of the bus signaled the eventual demise of the trolley car as a form of travel.', example_kor:'버스의 출현은 교통수단으로서 무괘도 전차의 궁극적인 소멸의 전조가 되었다.'}] }]
+                   {title: 'Trolley  명사(noun)',   contents: [{ audio_path: 'video/beginning/0_peppa_pig/trolley.mp3', img_path: 'video/beginning/0_peppa_pig/trolley.jpg', plura:'trolleys', meaning: '손수레(cart), 전차(trolley car)', example: 'The introduction of the bus signaled the eventual demise of the trolley car as a form of travel.', example_kor:'버스의 출현은 교통수단으로서 무괘도 전차의 궁극적인 소멸의 전조가 되었다.'}] }]
   
   // 퀴즈
   $scope.questions = [

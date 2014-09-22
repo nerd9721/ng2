@@ -30,3 +30,8 @@
   	margin: 5px;
   }
 
+ div.scroll {
+    width: 100%;
+    height: 300px;
+    overflow: scroll;
+}
