@@ -474,15 +474,15 @@
                                     
                                       <accordion close-others="oneAtATimeWord">
                                       
-                                          <accordion-group heading="{{word.title}}" ng-repeat="word in words">
+                                          <accordion-group heading="{{word.title}}" ng-repeat="word in words" class="panel-warning">
 
                                                 <li class="list-group-item"  ng-repeat="tmp in word.contents">
-                                                  <p> 뜻:&nbsp {{tmp.meaning}} <img src="{{tmp.img_path}}" alt="Tomato" height="75" width="75" align="right"></p>
+                                                  <p> 뜻:&nbsp {{tmp.meaning}} <img ng-src="{{tmp.img_path}}" alt="Tomato" height="75" width="75" align="right"></p>
                                                   <p> 복수:&nbsp {{tmp.plura}}</p>
                                                   <p> 예제:&nbsp{{tmp.example}}</p>
                                                   <p> 번역:&nbsp{{tmp.example_kor}}</p>
                                                   <audio controls>
-                                                    <source src="{{tmp.audio_path}}" type="audio/mpeg">
+                                                    <source ng-src="{{tmp.audio_path}}" type="audio/mpeg">
                                                   </audio>
                                                   
                                                 </li>

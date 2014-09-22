@@ -23,12 +23,28 @@ todos.controller('todoCtrl', function ($scope, $http){
     isFirstDisabled: false
   };
   
-  $scope.words = [ {title: 'Dinosaur 명사(noun)',   contents: [{ audio_path: 'video/beginning/0_peppa_pig/tomato.mp3', img_path: 'video/beginning/0_peppa_pig/dinosaur.jpg', plura:'Dinosaurs', meaning: '공룡', example: 'A special exhibition called Discovering Dinosaur Expo is being held there.', example_kor:'찾아가는 공룡 엑스포 라고 불리는 매우 특별한 전시회 가 그 곳 에서 열리고 있습니다.'}] }, 
-                   {title: 'Tomato   명사(noun)',   contents: [{ audio_path: 'video/beginning/0_peppa_pig/tomato.mp3', img_path: 'video/beginning/0_peppa_pig/tomato.jpg', plura:'Tomatoes', meaning: '야채 토마토', example: 'A special exhibition called Discovering Dinosaur Expo is being held there.', example_kor:'찾아가는 공룡 엑스포 라고 불리는 매우 특별한 전시회 가 그 곳 에서 열리고 있습니다.'}] }, 
-                   {title: 'Dinosaur 명사(noun)',   contents: [{ audio_path: 'video/beginning/0_peppa_pig/tomato.mp3', img_path: 'video/beginning/0_peppa_pig/dinosaur.jpg', plura:'dinosaurs', meaning: '공룡', example: 'A special exhibition called Discovering Dinosaur Expo is being held there.', example_kor:'찾아가는 공룡 엑스포 라고 불리는 매우 특별한 전시회 가 그 곳 에서 열리고 있습니다.'}] }]
+  $scope.words = [ {title: 'Dinosaur 명사(noun)',   contents: [{ audio_path: 'video/beginning/0_peppa_pig/dinosaur.mp3', img_path: 'video/beginning/0_peppa_pig/dinosaur.jpg', plura:'Dinosaurs', meaning: '공룡', example: "A special exhibition called Discovering Dinosaur Expo is being held there.", example_kor:'찾아가는 공룡 엑스포 라고 불리는 매우 특별한 전시회 가 그 곳 에서 열리고 있습니다.'}] }, 
+                   {title: 'Tomato   명사(noun)',   contents: [{ audio_path: 'video/beginning/0_peppa_pig/tomato.mp3', img_path: 'video/beginning/0_peppa_pig/tomato.jpg', plura:'Tomatoes', meaning: '토마토', example: "Today's tomato ketchup was devised by the American Henry J. Heinz in 1876.", example_kor:'오늘날의 토마토 케첩은 1876년에 헨리.J.하인즈이 고안했습니다.'}] }, 
+                   {title: 'trolley  명사(noun)',   contents: [{ audio_path: 'video/beginning/0_peppa_pig/trolley.mp3', img_path: 'video/beginning/0_peppa_pig/trolley.jpg', plura:'trolleys', meaning: '손수레(cart), 전차(trolley car)', example: 'The introduction of the bus signaled the eventual demise of the trolley car as a form of travel.', example_kor:'버스의 출현은 교통수단으로서 무괘도 전차의 궁극적인 소멸의 전조가 되었다.'}] }]
   
   // 퀴즈
-  $scope.questions = ["In which year, did the first world war start?::1912;1913;__1914;1915", "In which year, did the second world war start?::1937;__1939;1941;1943"];
+  $scope.questions = [
+                      "How many people are going shopping?::2;3;__4", 
+
+                      "Who loves sitting in the trolley?::George;Peppa;__Both of them",
+
+                      "What is correct?::George is too big for the trolley.;__Peppa is too big for the trolley; George wants to help with the shopping.",
+
+                      "What are in the shopping list?::tomatoes, onions, fruit;tomatoes, spaghetti, fruit;__tomatoes, onions, spaghetti, fruit",
+                      
+                      "What did they get first?::onions;__tomatoes; fruit",
+                      
+                      "What is not a mistake George made?::He called spaghetti 'pighetti';He thought they were going to buy a dinasour.;__He thought they were going to buy crisps.",
+                      
+                      "What fruit did George choose?::apple;banana;__melon",
+                      
+                      "How many things did they buy in the end?::3;4;__5"
+                      ];
   
   
   // 문법
