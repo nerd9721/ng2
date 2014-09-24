@@ -13,6 +13,7 @@ var routes = require('./routes');
 var port    =   process.env.PORT || 3000;
 
 app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public/assets'));
 
 app.use(morgan('dev'));
 app.use(bodyParser());
@@ -33,6 +34,7 @@ var router = express.Router();
 
 app.get('/', routes.index);
 router.get('/index', routes.index);
+router.get('/videoquiz', routes.videoquiz);
 
 
 
