@@ -5,15 +5,19 @@ var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
 var multer         = require('multer');
 var colors         = require('colors');
-
+var path = require('path');
 
 
 var app = express();
 var routes = require('./routes');
 var port    =   process.env.PORT || 3000;
 
+app.set('views', path.join(__dirname, 'views'));
+
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/public/assets'));
+
+
 
 app.use(morgan('dev'));
 app.use(bodyParser());

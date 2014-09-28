@@ -8,5 +8,5 @@ exports.index = function(req, res){
 };
 
 exports.videoquiz = function(req, res){
-  res.sendfile('./public/videoquiz.html');
+  res.sendfile('./views/videoquiz.html');
 };
