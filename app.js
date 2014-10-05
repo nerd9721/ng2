@@ -39,6 +39,7 @@ var router = express.Router();
 app.get('/', routes.index);
 router.get('/index', routes.index);
 router.get('/videoquiz', routes.videoquiz);
+router.get('/videoquiz/content', routes.videoquiz_content);
 
 
 

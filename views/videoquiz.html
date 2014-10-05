@@ -19,7 +19,7 @@
     <!-- GLOBAL STYLES -->
     <!-- GLOBAL STYLES -->
     <meta name="google" value="notranslate">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+
     <link rel="stylesheet" href="../assets/plugins/bootstrap/css/bootstrap.css" />
     <link rel="stylesheet" href="../assets/css/main.css" />
     <link rel="stylesheet" href="../assets/css/theme.css" />
@@ -33,7 +33,6 @@
     <script src="../scripts/angular.js"></script>
     <script src="../scripts/angular-sanitize.min.js"></script>
     <script src="../scripts/ui-bootstrap.min.js"></script>
-    <script src="../scripts/ng-infinite-scroll.min.js"></script>
     
     <!-- 개인적인 모듈 -->
     <link rel="stylesheet" type="text/css" href="../videoquiz/videoquiz.css">
@@ -318,7 +317,7 @@
 
                 
                 <li class="panel">
-                    <a href="index.html">
+                    <a href="./videoquiz.html">
                         <i class="icon-table"></i> Dashboard
      
                        
@@ -418,70 +417,147 @@
 
 
         <!--PAGE CONTENT -->
-	<div id="content">
+<div id="content">
 
-          <div class="inner">
-            <div class="row">
-              <div class="col-lg-12">
-                <h2> VideoQuiz </h2>
-              </div>
-            </div>
+            <div class="inner">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2> ESLVideo/Beginning </h2>
+                    </div>
+                </div>
 
-            <hr>
+                <hr>
 
-            <div class="row">
-              <div class="col-lg-12">
-                
-                <!--
-                <p>{{title}}</p>
-		<div>
-                  <div infinite-scroll='loadMore()' infinite-scroll-distance='2'>
-                    <img ng-repeat='image in images' ng-src='http://placehold.it/225x250&text={{image}}'>
-                  </div>
-		</div>
-		-->
+                <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            {{title}}
+                        </div>
+                             <div id="container">
+                             
+                                <canvas width="800" height="450"></canvas>
+                                
+                                <video controls width="800" height="450" preload="auto">
+                                
+                                  <source ng-src="{{video_src}}"  type="video/mp4">
+                                  <!--<track ng-src="{{video_subtitle_src}}" kind="subtitles" srclang="en" label="English" default>-->
+                                  <!--
+                                  <track ng-src="{{video_subtitle_src}}" kind="subtitles" srclang="en" label="English">
+                                  -->
+                                   
+                                </video>
+                      
+                      
+                              </div>
+                     
+                     <!--</br>-->
+                     
+                     <!--<h1> 체크 사이즈 </h1>-->
+    
+    
+                        <!--비디오 기준으로 한번 더 나눔-->
+                      <div class="row">
+                         <div class="col-lg-12">
+                          
+                          
+                              <div class="bs-example">
 
-		<div infinite-scroll='loadMore()' infinite-scroll-distance='2'>
+                                  <accordion close-others="oneAtATime">
+                                    <!-- 퀴즈 -->
+                                    <accordion-group class="panel-success" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+                                                                                                                          
+                                          <accordion-heading >
+                                            1. Quiz <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.isFirstOpen, 'glyphicon-chevron-right': !status.isFirstOpen}"></i>
+                                          </accordion-heading>
+                                             <div class="scroll">
+                                          <table style="width:100%">
+                                            <tr ng-repeat="question in questions">
+                                              <td>
+                                              <iquestion text="{{question}}"></iquestion>
+                                              </td>
+                                            </tr>
+                                            
+                                          </table> </div>
+                                          <iscorecard></iscorecard>
+     
+                                    </accordion-group>
+                                 
+                                 
+                                   <!-- 단어 -->
+                                    <accordion-group class="panel-success"  is-open="status.open" >
+                                    
+                                    
+                                      <accordion-heading >
+                                            2. Word <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                                      </accordion-heading>
+                                      
+                                      <accordion>
+                                      
+                                          <accordion-group ng-repeat="word in words" class="panel-warning"  is-open="status2.open" >
+                                              <accordion-heading >
+                                                {{$index+1}}. {{word.title}}  <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status2.open, 'glyphicon-chevron-right': !status2.open}"></i>
+                                              </accordion-heading>
 
-		  <div ng-repeat='item in videoquiz_info_container'> 
-		  
-		    <div class="list-group" style="border:2px solid #ff0000">
-		      <a href="http://google.com" class="list-group-item active"> <b>Date: 2014/09/30</b></a>
 
-		      <a href="http://google.com">
-			<div class="list-group-item ">
-			  <b> Title: Pig went shopping</b>
-			</div>
-		      </a>
+                                                <li class="list-group-item"  ng-repeat="tmp in word.contents">
+                                                  <p> 뜻:&nbsp {{tmp.meaning}} <img ng-src="{{tmp.img_path}}" alt="Tomato" height="75" width="75" align="right"></p>
+                                                  <p> 복수:&nbsp {{tmp.plura}}</p>
+                                                  <p> 예제:&nbsp{{tmp.example}}</p>
+                                                  <p> 번역:&nbsp{{tmp.example_kor}}</p>
+                                                  <audio controls>
+                                                    <source ng-src="{{tmp.audio_path}}" type="audio/mpeg">
+                                                  </audio>
+                                                  
+                                                </li>
+                                              
+                                            
+                                          </accordion-group>
+                                      
+                                      
+                                      </accordion>                                            
+                          
+                                      
+                                    </accordion-group>
+                                    
+                                    
+                                    <!-- 문법 -->
+                                    <accordion-group heading="3. Grammar" class="panel-success" ng-show="false" >
+                                      <div dynamic="html"></div>
+                                      
+                                  
+                                    </accordion-group>
+                           
+                                    
+                                  </accordion>
+                                </div>
 
-		      <a href="http://google.com">
-			<div class="list-group-item ">
-			  <img src="http://camendesign.com/code/video_for_everybody/poster.jpg" width="100%" height="100%">
-			</div>
-		      </a>
-		    </div>
-
-		  </div>
-
-		</div>
-
-		
-		<!-- -test -->
-		
-		
-              </div>
+                    
+                    
+                      
+                   
+                        
+                       </div> <!-- col-sm-12-->
+                      </div>  <!--row-fluid-->
+                     
+                     
+                     </br>
+                     
+                     
+                    </div>
+                </div>
             </div>  <!-- 시작점 종료 -->
 
 
 
-	  </div>
+</div>
+            </div>
+
+
+
+
         </div>
-
-
-
-
-    </div>
-    <!--END PAGE CONTENT -->
+       <!--END PAGE CONTENT -->
 
 
     </div>
