@@ -36,9 +36,29 @@
     overflow: scroll;
 }
 
+/*http://codepen.io/paulobrien/full/rpcjt*/
+
+/*------------------------------------------------------*/
+
+.fixed{
+  -margin: 5px;
+  position:fixed;
+  z-index:10;
+  top: 50px;
+}
 
 
-.sub-date {
-  -color: red;
-  float:right;
-} 
+.fixed-bottom{
+
+}
+
+div.scroll2{
+  -width: 100%;
+  height: 300px;
+  overflow: scroll;
+}
+
+
+div.scroll22{
+
+}

@@ -41,6 +41,10 @@ router.get('/index', routes.index);
 router.get('/videoquiz', routes.videoquiz);
 router.get('/videoquiz/content', routes.videoquiz_content);
 
+router.get('/yh', routes.videoquiz_content2);
+
+router.get('/watch', routes.videoquiz_content2);
+
 
 app.use('/', router);
 app.listen(port);
