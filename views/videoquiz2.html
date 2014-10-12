@@ -5,17 +5,17 @@
 
 <html ng-app="todos"> <!--<![endif]-->
 
-<!-- BEGIN HEAD-->
-<head>
-   
+  <!-- BEGIN HEAD-->
+  <head>
+    
     <meta charset="utf-8" />
     <title>Wakeup English</title>
     <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1">
     <meta content="" name="description" />
     <meta content="" name="author" />
-     <!--[if IE]>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <![endif]-->
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <![endif]-->
     <!-- GLOBAL STYLES -->
     <!-- GLOBAL STYLES -->
     <meta name="google" value="notranslate">
@@ -42,257 +42,125 @@
 
     <!-- PAGE LEVEL STYLES -->
     <!-- END PAGE LEVEL  STYLES -->
-       <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
-</head>
-    <!-- END  HEAD-->
-    <!-- BEGIN BODY-->
-<body class="padTop53" ng-controller="todoCtrl">
+  </head>
+  <!-- END  HEAD-->
+  <!-- BEGIN BODY-->
+  <body class="padTop53" ng-controller="todoCtrl">
 
-     <!-- MAIN WRAPPER -->
+    <!-- MAIN WRAPPER -->
     <div id="wrap">
+      <!-- HEADER SECTION -->
+      <div id="top">
 
+        <nav class="navbar navbar-inverse navbar-fixed-top " style="padding-top: 2px; min-height: 20px;">
+          <a data-original-title="Show/Hide Menu" data-placement="bottom" data-tooltip="tooltip" class="accordion-toggle btn btn-primary btn-sm visible-xs" data-toggle="collapse" href="#menu" id="menu-toggle" ng-click="updateMap()">
+            <i class="icon-align-justify"></i>
+          </a>
+          <!-- LOGO SECTION -->
+          <header class="navbar-header">
+            <a href="http://wakeupeng.com" class="navbar-brand">
+              <img src="/assets/img/logo.png" alt="" /></a>
+          </header>
+        </nav>
+      </div>
 
-         <!-- HEADER SECTION -->
-        <div id="top">
+      <div ng-include="'/share_html/left.html'"></div>
 
-            <nav class="navbar navbar-inverse navbar-fixed-top " style="padding-top: 5px;">
-                <a data-original-title="Show/Hide Menu" data-placement="bottom" data-tooltip="tooltip" class="accordion-toggle btn btn-primary btn-sm visible-xs" data-toggle="collapse" href="#menu" id="menu-toggle" ng-click="updateMap()">
-                    <i class="icon-align-justify"></i>
-                </a>
-                <!-- LOGO SECTION -->
-                <header class="navbar-header">
+      <!--PAGE CONTENT -->
+      <div id="content">
+        <div class="inner inner2">
+	  <div class="fixed" ng-show='!is_menu_clicked'>
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+		{{title}}
+              </div>
+              <div id="container">
+		<canvas width="1600" height="900"></canvas>
+		<video controls width="1600" height="900" preload="auto">
+		  <source ng-src="{{video_src}}"  type="video/mp4">
+		  <!--<track ng-src="{{video_subtitle_src}}" kind="subtitles" srclang="en" label="English" default>-->
+		  <!--
+		  <track ng-src="{{video_subtitle_src}}" kind="subtitles" srclang="en" label="English">
+		  --> 
+		</video>
+              </div>
+	    </div>
+	  </div>
+	  <div class="scroll22">
+	    <div class="bs-example">
 
-                    <a href="index.html" class="navbar-brand">
-                    <img src="/assets/img/logo.png" alt="" /></a>
-                </header>
-                <!-- END LOGO SECTION -->
-
-		<!--BEGIN TASK SECTION -->
-	
-
-                <!--END TASK SECTION -->
-
-                    <!--ALERTS SECTION -->
-            
-                    <!-- END ALERTS SECTION -->
-
-                    <!--ADMIN SETTINGS SECTIONS -->
-
-                    <!--END ADMIN SETTINGS -->
-           
-
-            </nav>
-
-        </div>
-        <!-- END HEADER SECTION -->
-
-
-
-        <!-- MENU SECTION -->
-<div id="left">
-            
-            <ul id="menu" class="collapse">
-
-                
-                <li class="panel">
-                    <a href="./videoquiz.html">
-                        <i class="icon-table"></i> Dashboard
-                    </a>                   
-                </li>
-
-                <li class="panel">
-                    <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-nav">
-                        <i class="icon-tasks"> </i> UI Elements     
-     
-                        <span class="pull-right">
-                          <i class="icon-angle-left"></i>
-                        </span>
-                       &nbsp; <span class="label label-default">10</span>&nbsp;
-                    </a>
-                    <ul class="collapse" id="component-nav">
-                        <li class=""><a href="button.html"><i class="icon-angle-right"></i> Buttons </a></li>
-                        <li class=""><a href="icon.html"><i class="icon-angle-right"></i> Icons </a></li>
-                    </ul>
-                </li>
-                <li class="panel">
-                    <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle collapsed" data-target="#form-nav">
-                        <i class="icon-pencil"></i> Forms
-     
-                        <span class="pull-right">
-                            <i class="icon-angle-left"></i>
-                        </span>
-                          &nbsp; <span class="label label-success">5</span>&nbsp;
-                    </a>
-                    <ul class="collapse" id="form-nav">
-                        <li class=""><a href="forms_general.html"><i class="icon-angle-right"></i> General </a></li>
-                        <li class=""><a href="forms_advance.html"><i class="icon-angle-right"></i> Advance </a></li>
-                    </ul>
-                </li>
-
-                <li class="panel">
-                    <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#pagesr-nav">
-                        <i class="icon-table"></i> Pages
-     
-                        <span class="pull-right">
-                            <i class="icon-angle-left"></i>
-                        </span>
-                          &nbsp; <span class="label label-info">6</span>&nbsp;
-                    </a>
-                    <ul class="collapse" id="pagesr-nav">
-                        <li><a href="pages_calendar.html"><i class="icon-angle-right"></i> Calendar </a></li>
-                        <li><a href="pages_timeline.html"><i class="icon-angle-right"></i> Timeline </a></li>
-                    </ul>
-                </li>
-                <li class="panel">
-                    <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#chart-nav">
-                        <i class="icon-bar-chart"></i> Charts
-     
-                        <span class="pull-right">
-                            <i class="icon-angle-left"></i>
-                        </span>
-                          &nbsp; <span class="label label-danger">4</span>&nbsp;
-                    </a>
-                    <ul class="collapse" id="chart-nav">
-                        <li><a href="charts_line.html"><i class="icon-angle-right"></i> Line Charts </a></li>
-                        <li><a href="charts_bar.html"><i class="icon-angle-right"></i> Bar Charts</a></li>
-                    </ul>
-                </li>
-
-                
-                
-
-                
-                  
-                
-
-            </ul>
-
-        </div>
-        <!--END MENU SECTION -->
-
-
-        <!--PAGE CONTENT -->
-	<div id="content">
-
-          <div class="inner">
-
-
-	    <div class="fixed" ng-show='!is_menu_clicked'>
-
-              <div class="panel panel-primary">
+	      <div class="panel panel-primary" ng-show='!is_menu_clicked'>
 
                 <div class="panel-heading">
 		  {{title}}
                 </div>
 
                 <div id="container">
-		  <canvas width="1600" height="900"></canvas>
-		  <video controls width="1600" height="900" preload="auto">
-
-		    <source ng-src="{{video_src}}"  type="video/mp4">
-		    
-		    <!--<track ng-src="{{video_subtitle_src}}" kind="subtitles" srclang="en" label="English" default>-->
-		    <!--
-		    <track ng-src="{{video_subtitle_src}}" kind="subtitles" srclang="en" label="English">
-		    -->
-		    
-		  </video>
+		  <canvas width="1600" height="800"></canvas>
+		  <div controls width="1600" height="800">        
+		  </div>
                 </div>
-
 	      </div>
+	      
+	      <div class="between-space"></div>
+	      
+              <accordion close-others="oneAtATime">
+                <accordion-group class="panel-success" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">                  
+		  <accordion-heading >
+                    1. Quiz <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.isFirstOpen, 'glyphicon-chevron-right': !status.isFirstOpen}"></i>
+		  </accordion-heading>
+		  <div>
+                    <table style="width:100%">
+                      <tr ng-repeat="question in questions">
+                        <td>
+			  <iquestion text="{{question}}"></iquestion>
+                        </td>
+                      </tr>
+                      
+                    </table> </div>
+		  <iscorecard></iscorecard>
+                </accordion-group>
 
-	    </div>
+                <accordion-group class="panel-success"  is-open="status.open" >
+		  <accordion-heading >
+                    2. Word <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+		  </accordion-heading>
+		  <accordion>
+                    <accordion-group ng-repeat="word in words" class="panel-warning"  is-open="status2.open" >
+                      <accordion-heading >
+                        {{$index+1}}. {{word.title}}  <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status2.open, 'glyphicon-chevron-right': !status2.open}"></i>
+                      </accordion-heading>
+                      <li class="list-group-item"  ng-repeat="tmp in word.contents">
+                        <p> 뜻:&nbsp {{tmp.meaning}} <img ng-src="{{tmp.img_path}}" alt="Tomato" height="75" width="75" align="right"></p>
+                        <p> 복수:&nbsp {{tmp.plura}}</p>
+                        <p> 예제:&nbsp{{tmp.example}}</p>
+                        <p> 번역:&nbsp{{tmp.example_kor}}</p>
+                        <audio controls>
+			  <source ng-src="{{tmp.audio_path}}" type="audio/mpeg">
+                        </audio>
+                      </li>
+                    </accordion-group>
+		  </accordion>                                            
+                </accordion-group>
+                <!-- 문법 -->
+                <accordion-group heading="3. Grammar" class="panel-success" ng-show="false" >
+		  <div dynamic="html"></div>  
+                </accordion-group>
+              </accordion>
+            </div>
+	  </div> 
 
-	 
+	  <div>
+	    <site-header back="back" forward="forward"></site-header>
+	  </div>
 
-		<div class="scroll22">
-		  <div class="bs-example">
-
-		    <div class="panel panel-primary" ng-show='!is_menu_clicked'>
-
-                      <div class="panel-heading">
-			{{title}}
-                      </div>
-
-                      <div id="container">
-			<canvas width="1600" height="900"></canvas>
-			<div controls width="1600" height="900" preload="auto">        
-
-
-			  
-			</div>
-                      </div>
-
-		    </div>
-
-		    <br>
-
-                    <accordion close-others="oneAtATime">
-                      <accordion-group class="panel-success" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">                  
-			<accordion-heading >
-                          1. Quiz <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.isFirstOpen, 'glyphicon-chevron-right': !status.isFirstOpen}"></i>
-			</accordion-heading>
-			<div>
-                          <table style="width:100%">
-                            <tr ng-repeat="question in questions">
-                              <td>
-				<iquestion text="{{question}}"></iquestion>
-                              </td>
-                            </tr>
-                            
-                          </table> </div>
-			<iscorecard></iscorecard>
-                      </accordion-group>
-
-                      <accordion-group class="panel-success"  is-open="status.open" >
-			<accordion-heading >
-                          2. Word <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
-			</accordion-heading>
-			<accordion>
-                          <accordion-group ng-repeat="word in words" class="panel-warning"  is-open="status2.open" >
-                            <accordion-heading >
-                              {{$index+1}}. {{word.title}}  <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status2.open, 'glyphicon-chevron-right': !status2.open}"></i>
-                            </accordion-heading>
-                            <li class="list-group-item"  ng-repeat="tmp in word.contents">
-                              <p> 뜻:&nbsp {{tmp.meaning}} <img ng-src="{{tmp.img_path}}" alt="Tomato" height="75" width="75" align="right"></p>
-                              <p> 복수:&nbsp {{tmp.plura}}</p>
-                              <p> 예제:&nbsp{{tmp.example}}</p>
-                              <p> 번역:&nbsp{{tmp.example_kor}}</p>
-                              <audio controls>
-				<source ng-src="{{tmp.audio_path}}" type="audio/mpeg">
-                              </audio>
-                            </li>
-                          </accordion-group>
-			</accordion>                                            
-                      </accordion-group>
-                      <!-- 문법 -->
-                      <accordion-group heading="3. Grammar" class="panel-success" ng-show="false" >
-			<div dynamic="html"></div>  
-                      </accordion-group>
-                    </accordion>
-                  </div>
-		</div>
-
-	    
-          </div> <!-- end of inner -->
-        </div>  <!-- end of content -->
-
-
-
-    </div>
-    </div>
-
-
-
-
-    </div>
-    <!--END PAGE CONTENT -->
-
-
+        </div> <!-- end of inner -->
+      </div>  <!-- end of content -->
     </div>
 
     <!--END MAIN WRAPPER -->
@@ -308,7 +176,7 @@
     
     
     <!-- END GLOBAL SCRIPTS -->
-</body>
-<!-- END BODY-->
+  </body>
+  <!-- END BODY-->
 
 </html>

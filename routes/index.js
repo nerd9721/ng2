@@ -1,7 +1,5 @@
 
-/*
- * GET home page.
- */
+var ua      = require('mobile-agent');
 
 exports.index = function(req, res){
   res.sendfile('./views/index.html');
@@ -13,6 +11,17 @@ exports.videoquiz = function(req, res){
 
 
 exports.videoquiz_content = function(req, res){
-  res.sendfile('./views/videoquiz2.html');
+   var agent = ua(req.headers['user-agent']);
+
+  if(agent.Mobile == true){
+    console.log('connection from mobile');
+    res.sendfile('./views/videoquiz2.html');
+  }
+  else{
+    console.log('connection from pc');
+    res.sendfile('./views/videoquiz2.html');
+  }
+  
+//  res.sendfile('./views/videoquiz2.html');
 };
 

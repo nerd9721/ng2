@@ -1,37 +1,45 @@
 
-  #container {
-    position: relative;
-  }
-  
-  video, canvas {
-    top: 0;
-    left: 0;
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    -border: 1px solid red;
-  }
-  video {
-    height: 100%;
-    position: absolute;
-  }
-  body {
-    margin: 0;
-    height: 100%;
-    width: 100%;
-  }
-  /*
+#container {
+  position: relative;
+}
+
+video, canvas {
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  -border: 1px solid red;
+}
+video {
+  height: 100%;
+  position: absolute;
+}
+body {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+/*
   ::cue {
-    color:#ff0000;
-    background:transparent;
+  color:#ff0000;
+  background:transparent;
   }*/
 
-  .bs-example{
-  	margin: 5px;
-  }
+.bs-example{
+  margin: 5px;
+}
 
- div.scroll {
-    width: 100%;
-    height: 300px;
-    overflow: scroll;
+div.scroll {
+  width: 100%;
+  height: 300px;
+  overflow: scroll;
+}
+
+.breadcrumb2 {
+  padding: 8px 15px;
+  margin-bottom: 5px;
+  list-style: none;
+  background-color: #f5f5f5;
+  border-radius: 4px;
 }

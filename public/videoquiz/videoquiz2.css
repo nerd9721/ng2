@@ -44,7 +44,7 @@
   -margin: 5px;
   position:fixed;
   z-index:10;
-  top: 50px;
+  top: 42px;
 }
 
 
@@ -61,4 +61,20 @@ div.scroll2{
 
 div.scroll22{
 
+}
+
+
+.panel-heading {
+  padding: 2px 5px;
+  border-bottom: 1px solid transparent;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+}
+
+.between-space {
+  padding-bottom: 10px;
+}
+
+.inner2{
+  padding-right: 0px;
 }
