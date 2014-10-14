@@ -24,3 +24,14 @@ exports.videoquiz_content = function(req, res){
   
 //  res.sendfile('./views/videoquiz2.html');
 };
+
+//get for videoquiz_tool
+exports.videoquiz_tool = function(req, res){
+  res.sendfile('./views/videoquiz_tool.html');
+};
+//post for videoquiz_tool
+exports.videoquiz_tool2 = function(req, res){
+ var _input = req.param("input");
+  console.log(_input);
+  res.send(_input);
+};

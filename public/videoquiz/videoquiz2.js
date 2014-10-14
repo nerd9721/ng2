@@ -7,9 +7,10 @@ todos.controller('todoCtrl', function ($scope, $http){
   $scope.title = 'Peppa Pig Shopping';
     
   // 비디오 관련 
-  $scope.video_src = '../video/beginning/0_peppa_pig/peppa_pig.mp4';
-  $scope.video_subtitle_src = '../video/beginning/0_peppa_pig/peppa_pig.vtt';
-  $scope.poster_src = '../video/beginning/0_peppa_pig/tomato.jpg';
+  $scope.video_src = '/res/videoquiz/lv1/0_peppa_pig/peppa_pig.mp4';
+  $scope.video_sub_src = '/res/videoquiz/lv1/0_peppa_pig/peppa_pig.vtt';
+  //$scope.video_sub_kor_src = '../res/videoquiz/lv1/0_peppa_pig/peppa_pig_kor.vtt';
+  $scope.poster_src = '/res/home/cabin.png';
 
 
   $scope.is_menu_clicked = false;
