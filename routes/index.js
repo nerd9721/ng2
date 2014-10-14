@@ -24,4 +24,3 @@ exports.videoquiz_content = function(req, res){
   
 //  res.sendfile('./views/videoquiz2.html');
 };
-
