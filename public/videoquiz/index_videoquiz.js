@@ -4,7 +4,7 @@ var todos = angular.module('todos', ['ngSanitize', 'ui.bootstrap', 'infinite-scr
 todos.controller('todoCtrl', function ($scope, $http){
 
   // 제목
-  $scope.title = 'Peppa Pig Shopping'
+  $scope.title = 'Peppa Pig Shopping';
     
   $scope.videoquiz_info_container = [];
 

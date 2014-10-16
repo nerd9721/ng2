@@ -116,9 +116,11 @@
 	      <br>
               <accordion close-others="oneAtATime">
                 <accordion-group class="panel-success" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">                  
+
 		  <accordion-heading >
-                    1. Quiz <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.isFirstOpen, 'glyphicon-chevron-right': !status.isFirstOpen}"></i>
+                    <a class="panel-title"> 1. Quiz <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.isFirstOpen, 'glyphicon-chevron-right': !status.isFirstOpen}"></i> </a>
 		  </accordion-heading>
+
 		  <div>
                     <table style="width:100%">
                       <tr ng-repeat="question in questions">
@@ -127,7 +129,9 @@
                         </td>
                       </tr>
                       
-                    </table> </div>
+                    </table>
+		  </div>
+
 		  <iscorecard></iscorecard>
                 </accordion-group>
 

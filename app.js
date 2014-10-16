@@ -40,8 +40,8 @@ app.get('/', routes.index);
 router.get('/index', routes.index);
 router.get('/videoquiz', routes.videoquiz);
 router.get('/videoquiz/content', routes.videoquiz_content);
-router.get('/videoquiz/tool', routes.videoquiz_tool);
-router.post('/videoquiz/tool', routes.videoquiz_tool2);
+router.get('/tool', routes.tool);
+router.post('/tool', routes.tool_post);
 
 
 app.use('/', router);

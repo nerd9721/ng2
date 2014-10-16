@@ -36,8 +36,8 @@
     <script src="../scripts/ng-infinite-scroll.min.js"></script>
     
     <!-- 개인적인 모듈 -->
-    <link rel="stylesheet" type="text/css" href="../videoquiz/index_videoquiz.css">
-    <script src="../videoquiz/index_videoquiz.js"></script>
+    <link rel="stylesheet" type="text/css" href="/tool/tool.css">
+    <script src="/tool/tool.js"></script>
 
     <!--END GLOBAL STYLES -->
 
@@ -69,19 +69,95 @@
             <div class="row-fluid">
               <div class="col-lg-12">
 
-	
+		<br>
 
-		<form  method="post" action="/videoquiz/tool">
+		<form  method="post" action="/tool">
 
 		  <div class="form-group">
-		    <label for="name">Text Area</label>
-		    <textarea class="form-control" rows="3" name="input"></textarea>
+		    <label for="name">큰분류</label>
+		    <br>
+		    <label class="checkbox-inline">
+		      <input type="radio" name="root"
+			     value="videoquiz" checked> videoquiz
+		    </label>
+		    <label class="checkbox-inline">
+		      <input type="radio" name="root"
+			     value="option2"> Option 2
+		    </label>
+		  </div>
+
+		  <div class="form-group">
+		    <label for="name">레벨</label>
+		    <br>
+		    <label class="checkbox-inline">
+		      <input type="radio" name="lv"
+			     value="lv1" checked> 레벨1
+		    </label>
+		    <label class="checkbox-inline">
+		      <input type="radio" name="lv"
+			     value="lv2"> 레벨2
+		    </label>
+		    <label class="checkbox-inline">
+		      <input type="radio" name="lv"
+			     value="lv3"> 레벨3
+		    </label>
+		  </div>
+
+		  <div class="form-group">
+		    <label for="name">제목</label>
+		    <textarea class="form-control" rows="1" name="title"></textarea>
+		  </div>
+		  <br>
+		  <div class="form-group">
+		    <label for="name">퀴즈</label>
+		    <textarea class="form-control" rows="8" name="quiz"></textarea>
+		  </div>
+
+		  <br>
+		  <hr>
+		  
+		  <div class="form-group">
+		    <label for="name">단어</label>
+
+		    <input class="input-small" rows="1" name="word_cnt" value="{{word_container.length}}">
+		    </input>
+		    <br>
+		    <button ng-click="word_btn('del')"  type="button" class="btn btn-default"
+			    style="float:right;">
+		     	삭제
+		    </button>
+
+		    <button ng-click="word_btn('add')"  type="button" class="btn btn-default"
+			    style="float:right;margin-right:10px">
+		      추가
+		    </button>
+
+
+		    <br>
+		    <br>
+
+		    <div ng-repeat="item in word_container">
+		      <input type="text" class="form-control" name="{{item.word}}" placeholder="단어 {{$index}}" style="margin-bottom:4px"> </input>
+		      <input type="text" class="form-control" placeholder="뜻 {{$index}}" name="{{item.def}}" style="margin-bottom:4px"> </input>
+		      <input type="text" class="form-control" placeholder="타입 {{$index}}" name="{{item.type}}" style="margin-bottom:4px"> </input>
+		      <input type="text" class="form-control" placeholder="복수 {{$index}}" name="{{item.plural}}" style="margin-bottom:4px"> </input>
+		      <input type="text" class="form-control" placeholder="예제 {{$index}}" name="{{item.example}}" style="margin-bottom:4px"> </input>
+		      <input type="text" class="form-control" placeholder="예제번역 {{$index}}" name="{{item.example_kor}}" style="margin-bottom:4px"> </input>
+		      <input type="text" class="form-control" placeholder="이미 지{{$index}}" name="{{item.img_src}}" style="margin-bottom:4px"> </input>
+		      <input type="text" class="form-control" placeholder="단어audio {{$index}}" name="{{item.audio_src}}" style="margin-bottom:4px"> </input>
+
+		 
+		      <br>
+		      <hr>
+
+		    </div>
+
 		  </div>
 
 		  <button type="submit" class="btn btn-default">저장</button>
 		</form>
 		
-
+		  <br>
               </div>
             </div>
 
