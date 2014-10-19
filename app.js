@@ -10,6 +10,7 @@ var path = require('path');
 
 var app = express();
 var routes = require('./routes');
+var api = require('./routes/api');
 var port    =   process.env.PORT || 3000;
 
 app.set('views', path.join(__dirname, 'views'));
@@ -43,6 +44,9 @@ router.get('/videoquiz/content', routes.videoquiz_content);
 router.get('/tool', routes.tool);
 router.post('/tool', routes.tool_post);
 
+//api
+router.get('/get_videoquiz', api.get_videoquiz);
+router.get('/get_videoquiz_title', api.get_videoquiz_by_lv);
 
 app.use('/', router);
 app.listen(port);

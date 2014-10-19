@@ -1,16 +1,57 @@
 var todos = angular.module('todos', ['ngSanitize', 'ui.bootstrap']);
 
 //todos.controller('todoCtrl', function ($scope, $http, $rootScope, $timeout, $dialogs){
-todos.controller('todoCtrl', function ($scope, $http){
+todos.controller('todoCtrl', function ($scope, $http, $location, $sce){
 
-  // 제목
-  $scope.title = 'Peppa Pig Shopping';
+  $scope.level = '';
+  var reqPromise;
+  $scope.init = function(){
+    var searchObject = $location.search();
+
+    var req_url = '/get_videoquiz?lv=' +  searchObject.lv + '&title=' + searchObject.title;
+    $scope.level = searchObject.lv;
+    reqPromise = $http.get(req_url);
     
+  };
+
+  $scope.video_src = '';
+  $scope.init();
+
+  reqPromise.success( function(body, status, headers,config){
+    var data = body;
+
+    if(data.length < 1){
+      alert('error');
+      return;
+    }
+
+    alert(data[0].title);
+    $scope.title = data[0].title;
+
+    $scope.path = '/res/videoquiz/' + $scope.level + '/' + data[0].title +'/';
+    
+    $scope.video_src = $scope.path + data[0].video_src;
+    //alert($scope.video_src);
+    $scope.video_sub_src = $scope.path + data[0].subtitle_src;
+    $scope.poster_src = $scope.path + data[0].poster_src;
+
+    //$scope.video_src = $sce.trustAsResourceUrl("/res/videoquiz/lv1/pig/peppa_pig.mp4");
+
+    //$scope.video_src = '/res/videoquiz/lv1/pig/peppa_pig.mp4';
+    
+  });
+  reqPromise.error( function(data, status, headers,config){
+    alert('error from get_data');
+  });
+
+  
+  //$scope.video_src = '/res/videoquiz/lv1/pig/peppa_pig.mp4';
+  // 제목
   // 비디오 관련 
-  $scope.video_src = '/res/videoquiz/lv1/0_peppa_pig/peppa_pig.mp4';
-  $scope.video_sub_src = '/res/videoquiz/lv1/0_peppa_pig/peppa_pig.vtt';
+  //$scope.item.video_src = '/res/videoquiz/lv1/0_peppa_pig/peppa_pig.mp4';
+  //$scope.item.video_sub_src = '/res/videoquiz/lv1/0_peppa_pig/peppa_pig.vtt';
   //$scope.video_sub_kor_src = '../res/videoquiz/lv1/0_peppa_pig/peppa_pig_kor.vtt';
-  $scope.poster_src = '/res/home/cabin.png';
+  //$scope.item.poster_src = '/res/home/cabin.png';
 
 
   $scope.is_menu_clicked = false;
@@ -26,9 +67,9 @@ todos.controller('todoCtrl', function ($scope, $http){
     }
 
   };
+
   
-  
-  
+
   // 단어
   $scope.oneAtATimeWord = true;
   $scope.oneAtATime = false;
@@ -37,6 +78,7 @@ todos.controller('todoCtrl', function ($scope, $http){
     isFirstOpen: true,
     isFirstDisabled: false
   };
+
   
   $scope.words = [ {title: 'Dinosaur 명사(noun)',   contents: [{ audio_path: '../video/beginning/0_peppa_pig/dinosaur.mp3', img_path: '../video/beginning/0_peppa_pig/dinosaur.jpg', plura:'Dinosaurs', meaning: '공룡', example: "A special exhibition called Discovering Dinosaur Expo is being held there.", example_kor:'찾아가는 공룡 엑스포 라고 불리는 매우 특별한 전시회 가 그 곳 에서 열리고 있습니다.'}] }, 
                    {title: 'Tomato   명사(noun)',   contents: [{ audio_path: '../video/beginning/0_peppa_pig/tomato.mp3', img_path: '../video/beginning/0_peppa_pig/tomato.jpg', plura:'Tomatoes', meaning: '토마토', example: "Today's tomato ketchup was devised by the American Henry J. Heinz in 1876.", example_kor:'오늘날의 토마토 케첩은 1876년에 헨리.J.하인즈이 고안했습니다.'}] }, 

@@ -1,4 +1,4 @@
-var todos = angular.module('todos', ['ngSanitize', 'ui.bootstrap']);
+var todos = angular.module('todos', ['ngSanitize', 'ui.bootstrap', 'angular-loading-bar']);
 
 //todos.controller('todoCtrl', function ($scope, $http, $rootScope, $timeout, $dialogs){
 todos.controller('todoCtrl', function ($scope, $http){

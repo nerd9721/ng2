@@ -1,55 +1,131 @@
+
+//var todos = angular.module('todos', ['ngSanitize', 'ui.bootstrap', 'infinite-scroll', 'ngRoute']);
 var todos = angular.module('todos', ['ngSanitize', 'ui.bootstrap', 'infinite-scroll']);
+/*
+ todos.config(function ($routeProvider, $locationProvider) {
+ //configure the routing rules here
+ $routeProvider.when('/videoquiz', {
+ controller: 'todoCtrl'
+ });
 
+ //routing DOESN'T work without html5Mode
+ $locationProvider.html5Mode(true);
+ });
+ */
 //todos.controller('todoCtrl', function ($scope, $http, $rootScope, $timeout, $dialogs){
-todos.controller('todoCtrl', function ($scope, $http){
-
+//todos.controller('todoCtrl', function ($scope, $http, $routeParams, $route, $location){
+todos.controller('todoCtrl', function ($scope, $http, $location){
+  /*
+   $scope.$on('$routeChangeSuccess', function () {
+   alert($routeParams.lv);
+   });
+   */
+  
   // 제목
-  $scope.title = 'Peppa Pig Shopping';
-    
+
+  $scope.level = 'lv0';
   $scope.videoquiz_info_container = [];
+  
+  $scope.init_done = false;
+  $scope.is_requesting_next = false;
+  $scope.scroll_busy = false;
 
+  var DEFAULT_REQUEST_CNT = 10;
+
+  var reqPromise;
   $scope.init = function(){
-
-    for(var i=0; i<10; i++){
-      $scope.videoquiz_info_container.push( {
-	title:'happy: ' + i.toString(),
-	time: '2014/09/30',
-	pic: 'http://somewhere.com/pic.jpg'
-      } );
+    var searchObject = $location.search();
+    if(searchObject.lv == 'lv1'){
+      $scope.level = 'lv1';
+      reqPromise = $http.get("/get_videoquiz_title?lv=lv1&begin_cnt=0");
+    }
+    else if(searchObject.lv == 'lv2'){
+      $scope.level = 'lv2';
+      reqPromise = $http.get("/get_videoquiz_title?lv=lv2&begin_cnt=0");
+    }
+    else if(searchObject.lv == 'lv3'){
+      //alert('레벨3이다');
+      $scope.level = 'lv3';
+      reqPromise = $http.get("/get_videoquiz_title?lv=lv3&begin_cnt=0");
+    }
+    else{
+      alert('wrong argument');
     }
   };
-  
-  $scope.init();
-  
-  $scope.loadMore = function() {
 
-    var begin_pos = $scope.videoquiz_info_container.length;
-    //alert(begin_pos);
+  if(!$scope.init_done){
+    $scope.init_done = true;
+    $scope.init();
+  }
+  
+  reqPromise.success( function(body, status, headers,config){
+    var data = body;
+
+    if(data.length >= DEFAULT_REQUEST_CNT){
+      $scope.is_requesting_next = true;
+    }
+    else{
+      $scope.is_requesting_next = false;
+    }
     
-    for(var i=begin_pos; i<begin_pos+10; i++){
+    for(var i=0; i<data.length; i++){
+      //alert(data[i].updated_date);
+      //alert(data[i].title);
+      //alert(data[i].poster_src);
 
-      var _img_url = '';
-      
-      if(i%2==0)
-      {
-	_img_url = "http://templateninja.net/themes/jessica/img/jessica-background-about.jp";
-      }
-      else
-      {
-	_img_url = "http://camendesign.com/code/video_for_everybody/poster.jp";
-      }
-
-      
-      $scope.videoquiz_info_container.push( {
-	title:'happy: ' + i.toString(),
-	upload_date: '2014/09/30',
-	img_url : _img_url
-      });
+      var temp = {};
+      temp.title = data[i].title;
+      temp.poster_src = '/res/videoquiz/' + $scope.level + '/' + temp.title + '/' + data[i].poster_src;
+      //alert(temp.poster_src);
+      temp.updated_date = data[i].updated_date;
+      temp.href = '/videoquiz/content#?lv=' + $scope.level + '&title=' + temp.title;
+      $scope.videoquiz_info_container.push(temp);
     }
+
+    
+    $scope.scroll_busy = false;
+  });
+  reqPromise.error( function(data, status, headers,config){
+    alert('error from get_data');
+  });
+  
+
+  $scope.load_more = function(){
+
+    if(!$scope.is_requesting_next){
+      return;
+    }
+    
+    if ($scope.scroll_busy)
+      return;
+    
+    $scope.scroll_busy = true;
+    
+    //alert('called loadmore');
+    
+    reqPromise = $http.get("/get_videoquiz_title?lv="  + $scope.level + "&begin_cnt=" + $scope.videoquiz_info_container.length.toString());
+
+    reqPromise.success( function(body, status, headers,config){
+      var data = body;
+      for(var i=0; i<data.length; i++){
+	//alert(data[i].updated_date);
+	//alert(data[i].title);
+	//alert(data[i].poster_src);
+	
+	for(var j=0; j<10; j++){
+	  $scope.videoquiz_info_container.push(data[i]);
+	}
+	
+      }
+      
+      $scope.scroll_busy = false;
+    });
+    reqPromise.error( function(data, status, headers,config){
+      alert('error from get_data');
+    });
+
   };
 
-  
 
   
-   
 });

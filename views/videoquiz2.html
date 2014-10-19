@@ -79,14 +79,15 @@
 
             <div class="panel2 panel-primary">
               <div class="panel-heading">
-		{{title}}
+		{{video_src}}
               </div>
               <div id="container">
 		<canvas width="1600" height="900"></canvas>
 		<video controls width="1600" height="900" preload="auto" poster="{{poster_src}}">
 		  <source ng-src="{{video_src}}"  type="video/mp4">
 
-		  <track ng-src="{{video_sub_src}}" kind="subtitles" srclang="en" label="English" default>
+		  <!--<track ng-src="{{video_sub_src}}" kind="subtitles" srclang="en" label="English" default>
+		  -->
 
 		</video>
               </div>
