@@ -80,6 +80,7 @@ exports.tool_post = function(req, res){
   var _video_src = req.param("video_src");
   var _poster_src = req.param("poster_src");
   var _subtitle_src = req.param("subtitle_src");
+  var _duration = req.param("duration");
   var _quiz = req.param("quiz");
   var word_cnt = req.param("word_cnt");
 
@@ -87,8 +88,8 @@ exports.tool_post = function(req, res){
 
   console.log(_updated_date);
   
-  var doc = { root: _root, lv: _lv, title: _title, video_src: _video_src, poster_src: _poster_src, quiz: _quiz,
-	      subtitle_src: _subtitle_src, updated_date: _updated_date};
+  var doc = { root: _root, lv: _lv, title: _title, video_src: _video_src, poster_src: _poster_src, duration: _duration,
+	      quiz: _quiz, subtitle_src: _subtitle_src, updated_date: _updated_date};
 
   var word_container = [];
 

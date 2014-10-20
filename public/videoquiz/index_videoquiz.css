@@ -51,3 +51,41 @@ div.scroll {
   background-color: #ffffff;
   border: 1px solid #dddddd;
 }
+
+p{
+  margin: 0 0 2px;
+}
+
+.help {
+  padding-right: 15px;
+}
+
+.s {
+  line-height: 1.228571429;
+  border-style: solid;
+  border-width: 1px;
+  height: 82px;
+  border-color: gray;
+  border-radius: 4px;
+}
+
+.s2 {
+  line-height: 1.28571429;
+  border-top: 1px solid;
+  padding-left:5px;
+  border-color: rgb(205, 205, 205);
+}
+
+.duration {
+  -border-top: 1px solid red;
+  -border: 1px solid;
+  -border-color: rgb(255, 255, 255);
+  position: absolute;
+  -width: inherit;
+  -border: 1px solid black;
+  color:white;
+  background-color:black;
+  top: 60px;
+  left:100px;
+  font-size: 12px;
+}

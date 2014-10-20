@@ -75,7 +75,7 @@ exports.get_videoquiz_by_lv = function(req, res){
   console.log(_lv);
   console.log(_begin_cnt);
 
-  _videoquiz_col.find({ lv: _lv}, {title:1, poster_src:1, updated_date:1}).sort({_id:-1}).skip(_begin_cnt).limit(10).toArray(function(err,rtn){
+  _videoquiz_col.find({ lv: _lv}, {title:1, poster_src:1, updated_date:1, duration:1}).sort({_id:-1}).skip(_begin_cnt).limit(10).toArray(function(err,rtn){
     res.set({ 'content-type': 'application/json; charset=utf-8' });
     res.end(JSON.stringify(rtn));
   });

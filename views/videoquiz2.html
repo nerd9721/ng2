@@ -7,7 +7,7 @@
 
   <!-- BEGIN HEAD-->
   <head>
-    
+
     <meta charset="utf-8" />
     <title>Wakeup English</title>
     <meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1">
@@ -79,15 +79,17 @@
 
             <div class="panel2 panel-primary">
               <div class="panel-heading">
-		{{video_src}}
+		{{title}}
               </div>
               <div id="container">
 		<canvas width="1600" height="900"></canvas>
-		<video controls width="1600" height="900" preload="auto" poster="{{poster_src}}">
-		  <source ng-src="{{video_src}}"  type="video/mp4">
+		<video controls width="1600" height="900" preload="auto" poster="{{poster_src}}" ng-src="{{video_src}}">
+		  
+		  <!-- <source ng-src="{{video_src}}"  type="video/mp4">  -->
 
-		  <!--<track ng-src="{{video_sub_src}}" kind="subtitles" srclang="en" label="English" default>
-		  -->
+		  <!--<track ng-src="{{video_sub_src}}" kind="subtitles" srclang="en" label="English" default>-->
+		  <track ng-src="{{video_sub_src}}" kind="subtitles" srclang="en" label="English">
+		  
 
 		</video>
               </div>
@@ -119,7 +121,7 @@
                 <accordion-group class="panel-success" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">                  
 
 		  <accordion-heading >
-                    <a class="panel-title"> 1. Quiz <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.isFirstOpen, 'glyphicon-chevron-right': !status.isFirstOpen}"></i> </a>
+                    <div class="panel-title"> 1. Quiz <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.isFirstOpen, 'glyphicon-chevron-right': !status.isFirstOpen}"></i> </div>
 		  </accordion-heading>
 
 		  <div>

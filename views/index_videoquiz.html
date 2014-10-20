@@ -20,6 +20,7 @@
     <!-- GLOBAL STYLES -->
     <meta name="google" value="notranslate">
     <meta name="apple-mobile-web-app-capable" content="yes">
+
     <link rel="stylesheet" href="../assets/plugins/bootstrap/css/bootstrap.css" />
     <link rel="stylesheet" href="../assets/css/main.css" />
     <link rel="stylesheet" href="../assets/css/theme.css" />
@@ -74,7 +75,7 @@
 
                 <ol class="breadcrumb">
 		  <li><a href="http://wakeupeng.com">Home</a></li>
-		  <li class="active">VideoQuiz(Beginner)</a></li>
+		  <li class="active">VideoQuiz({{nav_level}})</a></li>
 		</ol>
 
               </div>
@@ -84,31 +85,32 @@
 
             <div class="row">
               <div class="col-lg-12">
-     
+		
 
 		<div infinite-scroll='load_more()' infinite-scroll-disabled='scroll_busy' infinite-scroll-distance='2'>
 
 		  <div ng-repeat='item in videoquiz_info_container track by $index' class="col-sm-6"> 
 
-		    <div class="list-group">
-		      <a ng-href="http://wakeupeng.com">
-			<div class="list-group-item active">
-			  <!--<b> Title: Pig went shopping</b>  -->
-			  <b> {{item.title}}</b>
-			</div>
-		      </a>
+		    <a ng-href="{{item.href}}">
+		      <div class="s">
+			<img ng-src="/res/home/cabin.png" width="120px" height="80px" style="float:left; margin-right:5px;"/>
 
-		      <a ng-href="{{item.href}}">
-			<div class="list-group-item" style="border:1px solid #428bca">
-			  <b style="color: #FF0000; font-size: 13px">Updated date: </b>
-			  <!-- <b style="color: #009966; font-size: 13px">{{item.updated_date | date : format : timezone}}</b>-->
-			  <b style="color: black; font-size: 13px">{{item.updated_date | date : format : timezone}}</b>
-			  <img ng-src="{{item.poster_src}}" width="100%" height="210px">
-			</div>
-		      </a>
-		    
-		    </div>
+			
+			<p><b style="color: black; font-size: 13px">{{item.updated_date | date : format : timezone}}</b></p>
 
+			<div class="s2">
+			  <p> <b>{{item.title}} </b></p>
+			</div>
+
+			<div class="duration">
+			  {{item.duration}}
+			</div>
+
+
+
+		      </div>
+		    </a>
+		    <br>
 
 		  </div>
 

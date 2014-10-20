@@ -25,12 +25,12 @@ todos.controller('todoCtrl', function ($scope, $http, $location, $sce){
       return;
     }
 
-    alert(data[0].title);
+    //alert(data[0].title);
     $scope.title = data[0].title;
 
     $scope.path = '/res/videoquiz/' + $scope.level + '/' + data[0].title +'/';
     
-    $scope.video_src = $scope.path + data[0].video_src;
+    $scope.video_src = $sce.trustAsResourceUrl($scope.path + data[0].video_src);
     //alert($scope.video_src);
     $scope.video_sub_src = $scope.path + data[0].subtitle_src;
     $scope.poster_src = $scope.path + data[0].poster_src;
@@ -44,8 +44,9 @@ todos.controller('todoCtrl', function ($scope, $http, $location, $sce){
     alert('error from get_data');
   });
 
+
+  //$scope.video_src = '/res/videoquiz/lv1/PeppaPig-Daddy pigs new job/peppa_pig.mp4';
   
-  //$scope.video_src = '/res/videoquiz/lv1/pig/peppa_pig.mp4';
   // 제목
   // 비디오 관련 
   //$scope.item.video_src = '/res/videoquiz/lv1/0_peppa_pig/peppa_pig.mp4';
