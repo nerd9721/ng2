@@ -102,6 +102,47 @@ color: #fff;
 }
 */
 
+
+.help {
+  padding-right: 15px;
+}
+
+p {
+  margin: 0 0 -1px;
+}
+
+.s {
+  line-height: 1.228571429;
+  border-style: ridge;
+  border-width: 5px;
+  height: 108px;
+  -border-color: gray;
+  border-radius: 4px;
+  border-color: olive;
+}
+
+.s2 {
+  line-height: 1.28571429;
+  border-top: 2px solid;
+  padding-left:10px;
+  border-color: olive;
+  -border-color: rgb(205, 205, 205);
+}
+
+.duration {
+  -border-top: 1px solid red;
+  -border: 1px solid;
+  -border-color: rgb(255, 255, 255);
+  position: absolute;
+  -width: inherit;
+  -border: 1px solid black;
+  color:white;
+  background-color:black;
+  top: 60px;
+  left:100px;
+  font-size: 12px;
+}
+
 /* ------------------------------ */
 
 /*MORPH*/
