@@ -30,36 +30,37 @@ todos.controller('todoCtrl', function ($scope, $http, $location){
   $scope.is_requesting_next = false;
   $scope.scroll_busy = false;
 
-  //alert($location.absUrl());
-
   var DEFAULT_REQUEST_CNT = 10;
 
   var reqPromise;
   $scope.init = function(){
-    
-    var searchObject = $location.search();
-    if(searchObject.lv == 'lv1'){
+
+    var tmp = getJsonFromUrl();
+    //alert(tmp['lv']);
+    //var searchObject = $location.search();
+    if(tmp['lv'] == 'lv1'){
       $scope.level = 'lv1';
       $scope.nav_level = "Beginner";
       reqPromise = $http.get("/get_videoquiz_title?lv=lv1&begin_cnt=0");
     }
-    else if(searchObject.lv == 'lv2'){
+    else if(tmp['lv'] == 'lv2'){
       $scope.level = 'lv2';
       $scope.nav_level = "Intermediate";
       reqPromise = $http.get("/get_videoquiz_title?lv=lv2&begin_cnt=0");
     }
-    else if(searchObject.lv == 'lv3'){
-      //alert('레벨3이다');
+    else if(tmp['lv'] == 'lv3'){
       $scope.level = 'lv3';
       $scope.nav_level = "Advanced";
       reqPromise = $http.get("/get_videoquiz_title?lv=lv3&begin_cnt=0");
     }
     else{
-      $scope.level = 'lv1';
-      reqPromise = $http.get("/get_videoquiz_title?lv=lv1&begin_cnt=0");
+      //$scope.level = 'lv1';
+      //reqPromise = $http.get("/get_videoquiz_title?lv=lv1&begin_cnt=0");
       alert('wrong argument');
     }
+    
   };
+     
 
   if(!$scope.init_done){
     $scope.init_done = true;
@@ -149,3 +150,17 @@ todos.controller('todoCtrl', function ($scope, $http, $location){
 
   
 });
+
+
+function getJsonFromUrl() {
+  //return 2+3;
+  var query = location.search.substr(1);
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]);
+  });
+  return result;
+  
+}
+   
