@@ -6,10 +6,11 @@ todos.controller('todoCtrl', function ($scope, $http, $location, $sce){
   $scope.level = '';
   var reqPromise;
   $scope.init = function(){
-    var searchObject = $location.search();
-
-    var req_url = '/get_videoquiz?lv=' +  searchObject.lv + '&title=' + searchObject.title;
-    $scope.level = searchObject.lv;
+    //var searchObject = $location.search();
+    var tmp = getJsonFromUrl();
+    
+    var req_url = '/get_videoquiz?lv=' +  tmp['lv'] + '&title=' + tmp['title'];
+    $scope.level = tmp['lv'];
     reqPromise = $http.get(req_url);
     
   };
@@ -343,3 +344,15 @@ todos.directive('siteHeader', function () {
         }
     };
 });
+
+
+function getJsonFromUrl() {
+  //return 2+3;
+  var query = location.search.substr(1);
+  var result = {};
+  query.split("&").forEach(function(part) {
+    var item = part.split("=");
+    result[item[0]] = decodeURIComponent(item[1]);
+  });
+  return result;  
+}

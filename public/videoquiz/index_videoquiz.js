@@ -87,7 +87,7 @@ todos.controller('todoCtrl', function ($scope, $http, $location){
       temp.poster_src = '/res/videoquiz/' + $scope.level + '/' + temp.title + '/' + data[i].poster_src;
       //alert(temp.poster_src);
       temp.updated_date = data[i].updated_date;
-      temp.href = '/videoquiz/content#?lv=' + $scope.level + '&title=' + temp.title;
+      temp.href = '/videoquiz/content?lv=' + $scope.level + '&title=' + temp.title;
 
       temp.duration = data[i].duration;
       
