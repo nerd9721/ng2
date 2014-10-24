@@ -146,9 +146,6 @@ todos.controller('todoCtrl', function ($scope, $http, $location){
     });
 
   };
-
-
-  
 });
 
 

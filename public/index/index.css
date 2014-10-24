@@ -285,7 +285,7 @@ section.success {
     display: block;
     position: relative;
     margin: 0 auto;
-    max-width: 400px;
+    -max-width: 400px;
 }
 
 #portfolio .portfolio-item .portfolio-link .caption {
@@ -293,7 +293,8 @@ section.success {
     width: 100%;
     height: 100%;
     opacity: 0;
-    background: rgba(24,188,156,.9);
+    -background: rgba(24,188,156,.9);
+    background: rgba(99, 201, 181, 0.9);
     -webkit-transition: all ease .5s;
     -moz-transition: all ease .5s;
     transition: all ease .5s;
@@ -508,7 +509,12 @@ form .row:first-child .floating-label-form-group {
 
 
 
-
+#portfolio .portfolio-item .portfolio-link2 {
+display: block;
+position: relative;
+margin: 0 auto;
+/* max-width: 400px; */
+}
 
 
 
